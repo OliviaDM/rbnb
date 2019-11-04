@@ -18,7 +18,6 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
-    @booking.save
   end
 
   def destroy
