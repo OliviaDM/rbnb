@@ -10,9 +10,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_11_04_153214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "beasts", force: :cascade do |t|
+    t.bigint "sucker_id"
+    t.bigint "type_id"
+    t.string "name"
+    t.string "region"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sucker_id"], name: "index_beasts_on_sucker_id"
+    t.index ["type_id"], name: "index_beasts_on_type_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "sucker_id"
+    t.bigint "beast_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beast_id"], name: "index_bookings_on_beast_id"
+    t.index ["sucker_id"], name: "index_bookings_on_sucker_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.bigint "beast_id"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beast_id"], name: "index_photos_on_beast_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "booking_id"
+    t.text "sucker_content"
+    t.integer "sucker_rating"
+    t.text "beast_content"
+    t.integer "beast_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+  end
+
+  create_table "suckers", force: :cascade do |t|
+    t.string "user_name"
+    t.string "password"
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.string "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "beasts", "suckers"
+  add_foreign_key "beasts", "types"
+  add_foreign_key "bookings", "beasts"
+  add_foreign_key "bookings", "suckers"
+  add_foreign_key "photos", "beasts"
+  add_foreign_key "reviews", "bookings"
 end

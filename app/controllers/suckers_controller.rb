@@ -1,0 +1,2 @@
+class SuckersController < ApplicationController
+end
