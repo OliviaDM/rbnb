@@ -1,0 +1,2 @@
+class Sucker < ApplicationRecord
+end
