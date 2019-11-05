@@ -5,7 +5,7 @@ class BeastsController < ApplicationController
   end
 
   def show
-    @booking = Booking.new
+    @booking = Booking.new(beast_id: @current_beast.id)
     @average_rating = 0
     @count = 0
     @current_beast.reviews.each do |review|
