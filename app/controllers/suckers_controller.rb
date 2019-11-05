@@ -1,5 +1,5 @@
 class SuckersController < ApplicationController
-  before_action :set_current_sucker, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_sucker, only: [:show, :edit, :update]
   def new
     @sucker = Sucker.new()
   end
