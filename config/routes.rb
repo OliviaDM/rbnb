@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   devise_for :suckers
   root to: 'pages#home'
-  resources :beasts
-  resources :bookings, only: [:show, :new, :create, :edit, :update, :destroy] do
-    member do
-      resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+  resources :beasts do
+    resources :bookings, only: [:show, :new, :create, :edit, :update, :destroy] do
+      member do
+        resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+      end
     end
   end
   resources :suckers, only: [:show, :new, :create, :edit, :update]
