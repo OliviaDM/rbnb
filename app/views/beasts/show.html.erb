@@ -1,0 +1,28 @@
+<%= @current_beast.name %> <br>
+<%= @current_beast.sucker.name %> <br>
+<%= @current_beast.description %>
+
+<h4>Book this beast</h4>
+<%= render 'booking_form', booking: @booking %>
+
+<h4>Reviews</h4>
+<% if @count.zero? %>
+  <p>No ratings given yet.</p>
+<% else %>
+  <p>Average rating: </p>
+  <%= @average_rating.fdiv(@count) %>
+<% end %>
+<% @current_beast.reviews.each do |review| %>
+  <div>
+    <%= review.beast_content %>
+  </div>
+<% end %>
+<!--
+- Booking form
+- back to list
+- (date-time price thing)
+- Photos
+- Reviews + review form
+- contact host
+- (Availibilities)
+ -->
