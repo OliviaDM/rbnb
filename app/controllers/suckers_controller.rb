@@ -1,4 +1,5 @@
 class SuckersController < ApplicationController
+  before_action :set_current_sucker, only: [:show, :edit, :update, :destroy]
   def new
     @sucker = Sucker.new()
   end
@@ -9,19 +10,20 @@ class SuckersController < ApplicationController
   end
 
   def edit
-    @sucker = Sucker.find(params[:id])
   end
 
   def update
-    @sucker = Sucker.find(params[:id])
-    @rsucker.update(sucker_params)
+    @current_sucker.update(sucker_params)
   end
 
   def show
-    @sucker = Sucker.find(params[:id])
   end
 
   private
+
+  def set_current_sucker
+    @current_sucker = Sucker.find(params[:id])
+  end
 
   def sucker_params
     params.require(:sucker).permit(:name, :user_name, :passowrd, :email, :phone)

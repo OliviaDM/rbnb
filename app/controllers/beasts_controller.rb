@@ -1,5 +1,5 @@
 class BeastsController < ApplicationController
-  before_action :set_current_beast, only: [:show, :edit, :update, :destroy, :chef]
+  before_action :set_current_beast, only: [:show, :edit, :update, :destroy]
   def index
     @beasts = Beast.all
   end
