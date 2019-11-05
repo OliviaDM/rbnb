@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :suckers
+
   root to: 'pages#home'
   resources :beasts do
     member do
