@@ -5,6 +5,15 @@ class BeastsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+    @average_rating = 0
+    @count = 0
+    @current_beast.reviews.each do |review|
+      if review.beast_rating
+        @count += 1
+        @average_rating += review.beast_rating
+      end
+    end
   end
 
   def new
@@ -25,6 +34,7 @@ class BeastsController < ApplicationController
       redirect_to @beast, notice: 'Beast was successfully updated.'
     else
       render :edit
+    end
   end
 
   def destroy
