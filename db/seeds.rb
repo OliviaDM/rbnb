@@ -7,17 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-user = Sucker.new(name: "Quarantaine", user_name: "loser", email: "loseremail@loser.loser", phone: "+123", encrypted_password: "pregnfnsat", avatar: "beanface.png")
-user.save
+sucker = Sucker.create!(name: "Quarantaine", user_name: "loser", email: "loseremail@loser.loser", phone: "+123", encrypted_password: "pregnfnsat", password: "pregnfnsat", avatar: "beanface.png")
 
-user = Sucker.new(name: "Olivia", user_name: "liv", email: "coolemail@cool.cool", phone: "pls don't", encrypted_password: "password", avatar: "cuteface.png")
-user.save
+sucker = Sucker.create!(name: "Olivia", user_name: "liv", email: "coolemail@cool.cool", phone: "pls don't", encrypted_password: "password", password: "password", avatar: "cuteface.png")
 
-user = Sucker.new(name: "Nicola", user_name: "nicolas", email: "niconicos@email.com", phone: "444719", encrypted_password: "uggggggh", avatar: "beardface.png")
-user.save
+sucker = Sucker.create!(name: "Nicola", user_name: "nicolas", email: "niconicos@email.com", phone: "444719", encrypted_password: "uggggggh", password: "uggggggh", avatar: "beardface.png")
 
-user = Sucker.new(name: "Na-oh-zky", user_name: "nautsky", email: "cjhvdjhbvd@jhchjvd.j", phone: "911", encrypted_password: "imfabulous69", avatar: "hatface.png")
-user.save
+sucker = Sucker.create!(name: "Na-oh-zky", user_name: "nautsky", email: "cjhvdjhbvd@jhchjvd.j", phone: "911", encrypted_password: "imfabulous69", password: "imfabulous69", avatar: "hatface.png")
 
 poke = Type.new(name: "pokemon")
 poke.save
