@@ -7,5 +7,5 @@ class Review < ApplicationRecord
     too_long: "The review should be less than 200 characters,
     try to be concise!"
   }
-  validates :sucker_rating, :beast_rating, inclusion: { in: 0..5, message: "The rating should between 0 and 5" }
+  validates :sucker_rating, :beast_rating, inclusion: { in: [0..5], message: "The rating should between 0 and 5" }
 end
