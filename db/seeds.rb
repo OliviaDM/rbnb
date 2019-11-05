@@ -18,35 +18,35 @@ sucker = Sucker.create!(name: "Na-oh-zky", user_name: "nautsky", email: "cjhvdjh
 poke = Type.new(name: "pokemon")
 poke.save
 
-# 10.times do
-#   owner = Sucker.all.sample
-#   region = Faker::Games::Pokemon.location
-#   description = Faker::Games::Pokemon.move
-#   name = Faker::Games::Pokemon.name
-#   beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: poke.id)
-#   beast.save
-# end
+10.times do
+  owner = Sucker.all.sample
+  region = Faker::Games::Pokemon.location
+  description = Faker::Games::Pokemon.move
+  name = Faker::Games::Pokemon.name
+  beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: poke.id)
+  beast.save
+end
 
-# sonic = Type.new(name: "sonic")
-# sonic.save
+sonic = Type.new(name: "sonic")
+sonic.save
 
-# 10.times do
-#   owner = Sucker.all.sample
-#   region = Faker::Games::SonicTheHedgehog.zone
-#   description = Faker::Games::SonicTheHedgehog.game
-#   name = Faker::Games::SonicTheHedgehog.character
-#   beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: sonic.id)
-#   beast.save
-# end
+10.times do
+  owner = Sucker.all.sample
+  region = Faker::Games::SonicTheHedgehog.zone
+  description = Faker::Games::SonicTheHedgehog.game
+  name = Faker::Games::SonicTheHedgehog.character
+  beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: sonic.id)
+  beast.save
+end
 
-# zelda = Type.new(name: "zelda")
-# zelda.save
+zelda = Type.new(name: "zelda")
+zelda.save
 
-# 10.times do
-#   owner = Sucker.all.sample
-#   region = Faker::Games::Zelda.location
-#   description = Faker::Games::Zelda.game
-#   name = Faker::Games::Zelda.character
-#   beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: zelda.id)
-#   beast.save
-# end
+10.times do
+  owner = Sucker.all.sample
+  region = Faker::Games::Zelda.location
+  description = Faker::Games::Zelda.game
+  name = Faker::Games::Zelda.character
+  beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: zelda.id)
+  beast.save
+end
