@@ -25,6 +25,7 @@ class BeastsController < ApplicationController
       redirect_to @beast, notice: 'Beast was successfully updated.'
     else
       render :edit
+    end
   end
 
   def destroy
