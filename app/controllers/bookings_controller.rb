@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.user_id = @user.id
+    @booking.sucker_id = @sucker.id
     @booking.save
   end
 
