@@ -1,5 +1,5 @@
 <%= @current_beast.name %> <br>
-<%= @current_beast.sucker.name %> <br>
+<%= link_to @current_beast.sucker.name, sucker_path(@current_beast.sucker.id) %> <br>
 <%= @current_beast.description %>
 
 <h4>Book this beast</h4>
