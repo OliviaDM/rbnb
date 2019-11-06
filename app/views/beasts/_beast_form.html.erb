@@ -1,0 +1,16 @@
+<%= simple_form_for(@beast) do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %> <br>
+
+<%= f.association :type %> <br>
+
+<%= f.label :description %>
+<%= f.text_field :description %> <br>
+
+<%= f.label :region %>
+<%= f.text_field :region %> <br>
+
+<%= f.submit %>
+
+<% end %>

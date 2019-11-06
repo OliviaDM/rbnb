@@ -21,13 +21,17 @@ class BeastsController < ApplicationController
   end
 
   def new
-    @beast = Beast.new(beast_params)
+    @beast = Beast.new()
+    authorize @beast
   end
 
   def create
     @beast = Beast.new(beast_params)
+    @beast.sucker_id = current_sucker.id
     @beast.save
+    raise
     redirect_to @beast, notice: 'Beast was successfully created.'
+    authorize @beast
   end
 
   def edit
@@ -53,6 +57,6 @@ class BeastsController < ApplicationController
   end
 
   def beast_params
-    params.require(:beast).permit(:sucker, :type, :name, :region, :description)
+    params.require(:beast).permit(:sucker_id, :type_id, :name, :region, :description)
   end
 end
