@@ -3,6 +3,8 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def show
+    @beast = @booking.beast
+    @review = @booking.review
     authorize @booking
   end
 
@@ -17,7 +19,10 @@ class BookingsController < ApplicationController
     @booking.sucker_id = current_sucker.id
     @booking.save
     # p @booking
-    redirect_to beast_path(params[:id])
+    @review = Review.new()
+    @review.booking_id = @booking.id
+    @review.save
+    redirect_to booking_path(@booking.id)
     authorize @booking
   end
 
@@ -35,7 +40,7 @@ class BookingsController < ApplicationController
   private
 
   def set_booking
-    @booking = Booking.find(params[:booking_id])
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params

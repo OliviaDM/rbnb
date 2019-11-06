@@ -25,7 +25,7 @@ poke.save
   name = Faker::Games::Pokemon.name
   beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: poke.id)
   beast.save
-  p beast.errors
+  beast.errors
 end
 
 sonic = Type.new(name: "sonic")
