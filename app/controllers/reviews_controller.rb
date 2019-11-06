@@ -5,7 +5,6 @@ class ReviewsController < ApplicationController
   def update
     @review.update(review_params)
     @review.save
-    raise
     redirect_to beast_path(@review.booking.beast.id)
     authorize @review
   end
