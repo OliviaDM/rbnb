@@ -1,4 +1,5 @@
 class SuckersController < ApplicationController
+  before_action :authenticate_sucker!, only: [:edit, :update]
   before_action :set_current_sucker, only: [:show, :edit, :update]
   def new
     @sucker = Sucker.new()
