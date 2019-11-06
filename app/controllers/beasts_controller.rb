@@ -2,7 +2,15 @@ class BeastsController < ApplicationController
   before_action :authenticate_sucker!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_current_beast, only: [:show, :edit, :update, :destroy]
   def index
-    @beasts = Beast.all
+    @beasts = Beast.geocoded
+
+    @markers = @beasts.map do |beast|
+      {
+        lat: beast.latitude,
+        lng: beast.longitude
+      }
+    end
+
     policy_scope @beasts
     authorize @beasts
   end
