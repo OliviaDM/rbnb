@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     @review = Review.new()
     @review.booking_id = @booking.id
     @review.save
-    redirect_to booking_path(@booking.id)
+    redirect_to sucker_path(current_sucker.id)
     authorize @booking
   end
 
