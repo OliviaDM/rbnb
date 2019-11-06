@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   resources :beasts do
-    resources :bookings, only: [:show, :new, :create, :edit, :update, :destroy] do
-      member do
-        resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+    member do
+      resources :bookings, only: [:show, :new, :create, :edit, :update, :destroy] do
+        member do
+          resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+        end
       end
     end
   end

@@ -3,7 +3,7 @@
 <%= @current_beast.description %>
 
 <h4>Book this beast</h4>
-<%= render 'booking_form', booking: @booking %>
+<%= render 'booking_form', beast: @current_beast, booking: @booking %>
 
 <h4>Reviews</h4>
 <% if @count.zero? %>
