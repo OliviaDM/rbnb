@@ -20,11 +20,12 @@ poke.save
 
 10.times do
   owner = Sucker.all.sample
-  region = Faker::Games::Pokemon.location
-  description = Faker::Games::Pokemon.move
+  region = Faker::Address.city
+  description = Faker::Lorem.paragraph
   name = Faker::Games::Pokemon.name
   beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: poke.id)
   beast.save
+  p beast.errors
 end
 
 sonic = Type.new(name: "sonic")
@@ -32,8 +33,8 @@ sonic.save
 
 10.times do
   owner = Sucker.all.sample
-  region = Faker::Games::SonicTheHedgehog.zone
-  description = Faker::Games::SonicTheHedgehog.game
+  region = Faker::Address.city
+  description = Faker::Lorem.paragraph
   name = Faker::Games::SonicTheHedgehog.character
   beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: sonic.id)
   beast.save
@@ -44,8 +45,8 @@ zelda.save
 
 10.times do
   owner = Sucker.all.sample
-  region = Faker::Games::Zelda.location
-  description = Faker::Games::Zelda.game
+  region = Faker::Address.city
+  description = Faker::Lorem.paragraph
   name = Faker::Games::Zelda.character
   beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: zelda.id)
   beast.save
