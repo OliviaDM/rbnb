@@ -1,1 +1,40 @@
 // Specific CSS for your home-page
+.banner {
+  background-image: linear-gradient(90deg, rgba(2,0,36,0.45281862745098034) 0%, rgba(0,212,255,1) 100%), url(https://vignette.wikia.nocookie.net/game-of-thrones-le-trone-de-fer/images/8/82/Winterfell_8x01_%2825%29.jpg/revision/latest?cb=20190417214040&path-prefix=fr);
+  background-size: cover;
+  background-position: center;
+  padding: 200px 0;
+  height: 100vh;
+}
+
+h1 {
+    display: block;
+    font-size: 7em;
+    font-weight: normal;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+h1 span {
+  font-weight: bold;
+}
+
+.container {
+    width: 900px;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: rgba(0,212,255,1);
+    padding: 16px 36px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    border: none;
+}
