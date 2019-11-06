@@ -1,4 +1,5 @@
 class BeastsController < ApplicationController
+  before_action :authenticate_sucker!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_current_beast, only: [:show, :edit, :update, :destroy]
   def index
     @beasts = Beast.all

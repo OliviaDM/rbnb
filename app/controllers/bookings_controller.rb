@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_sucker!, only: [:create, :edit, :update, :destroy]
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def show
