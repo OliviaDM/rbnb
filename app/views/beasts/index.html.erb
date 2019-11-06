@@ -1,0 +1,9 @@
+<div>
+  <% @beasts.each do |beast| %>
+    <div class="card">
+      <h4><%= link_to beast.name, beast_path(beast.id) %></h4>
+      <%= beast.type.name %> <br>
+      <%= beast.sucker.name %>
+    </div>
+  <% end %>
+</div>

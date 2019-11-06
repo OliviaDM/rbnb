@@ -3,6 +3,8 @@ class BeastsController < ApplicationController
   before_action :set_current_beast, only: [:show, :edit, :update, :destroy]
   def index
     @beasts = Beast.all
+    policy_scope @beasts
+    authorize @beasts
   end
 
   def show
