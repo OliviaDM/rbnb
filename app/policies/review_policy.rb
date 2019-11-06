@@ -3,5 +3,9 @@ class ReviewPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+
+    def update
+      true
+    end
   end
 end

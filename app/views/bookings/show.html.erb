@@ -2,3 +2,4 @@
 <h2><%= @booking.beast.name %></h2>
 <h2><%= @booking.start_date %></h2>
 <h2><%= @booking.end_date %></h2>
+<%= render 'form_review', beast: @booking.beast, booking: @booking, review: @booking.review %>
