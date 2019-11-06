@@ -11,8 +11,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.sucker_id = @sucker.id
+    @booking.beast_id = params[:id]
+
+    @booking.sucker_id = current_sucker.id
     @booking.save
+    # p @booking
+    redirect_to beast_path(params[:id])
+    authorize @booking
   end
 
   def edit
@@ -29,10 +34,10 @@ class BookingsController < ApplicationController
   private
 
   def set_booking
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:booking_id])
   end
 
   def booking_params
-    params.require(:booking).permit(:sucker_id, :beast_id, :date_start, :date_end)
+    params.require(:booking).permit(:sucker_id, :beast_id, :start_date, :end_date)
   end
 end
