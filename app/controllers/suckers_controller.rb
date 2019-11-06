@@ -18,6 +18,7 @@ class SuckersController < ApplicationController
   end
 
   def show
+    authorize @current_sucker
   end
 
   private
