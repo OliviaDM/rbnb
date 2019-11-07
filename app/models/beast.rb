@@ -14,4 +14,7 @@ class Beast < ApplicationRecord
     too_long: "The description should be less than 200 characters,
     try to be concise as it will improve the booking rate of your beast!"
   }
+
+  geocoded_by :region
+  after_validation :geocode, if: :will_save_change_to_region?
 end
