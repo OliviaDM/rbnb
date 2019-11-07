@@ -1,5 +1,5 @@
 <body>
-  <div class="container">
+  <div class="container" id="search">
     <%= form_tag beasts_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
@@ -8,22 +8,27 @@
       %>
       <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>
+  </div>
+  <div class="container">
     <h1 class="text-center">Beasts</h1>
-    <div class="cards d-flex flex-wrap">
-      <% @beasts.each do |beast| %>
-        <div class="card w-25 m-3">
-          <img src="https://www.sciencesetavenir.fr/assets/img/2019/03/25/cover-r4x3w1000-5c98c40f5bf3d-cat-3535399-1920.jpg" class="card-img-top" alt="Cute kittens!">
-          <div class="card-body">
-            <h4><%= link_to beast.name, beast_path(beast.id) %></h4>
-            <%= beast.type.name %> <br>
-            <%= link_to beast.sucker.name, sucker_path(beast.sucker.id) %>
-            <h4>$<%= beast.price %>/day</h4>
-          </div>
+  </div>
+  <div class="main-container d-flex">
+    <div class="container" id="cards">
+        <div class="cards d-flex flex-wrap">
+          <% @beasts.each do |beast| %>
+            <div class="card w-25 m-3">
+              <img src="https://www.sciencesetavenir.fr/assets/img/2019/03/25/cover-r4x3w1000-5c98c40f5bf3d-cat-3535399-1920.jpg" class="card-img-top" alt="Cute kittens!">
+              <div class="card-body">
+                <h4><%= link_to beast.name, beast_path(beast.id) %></h4>
+                <%= beast.type.name %> <br>
+                <%= link_to beast.sucker.name, sucker_path(beast.sucker.id) %>
+                <h4>$<%= beast.price %>/day</h4>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
     </div>
-
-<!-- MAP (generic) -->
+    <!-- MAP (generic) -->
     <div
       id="map"
       style="width: 100%;
@@ -31,6 +36,6 @@
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
-<!-- MAP -->
+    <!-- MAP -->
   </div>
 </body>
