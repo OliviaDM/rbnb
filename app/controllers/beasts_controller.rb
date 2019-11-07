@@ -3,11 +3,18 @@ class BeastsController < ApplicationController
   before_action :set_current_beast, only: [:show, :edit, :update, :destroy]
   def index
     @beasts = Beast.geocoded
+    if params[:query].present?
+      @beasts = Beast.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @beasts = Beast.all
+    end
 
     @markers = @beasts.map do |beast|
       {
         lat: beast.latitude,
-        lng: beast.longitude
+        lng: beast.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { beast: beast }),
+        image_url: helpers.asset_url('pokeball.png')
       }
     end
 

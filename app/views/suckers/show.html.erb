@@ -1,16 +1,18 @@
 <h1><%= @test_sucker.name %></h1>
 
-<h2>Bookings</h2>
-<% @test_sucker.bookings.each do |booking| %>
-  <div class="card">
-    <h5><%= booking.beast.name %></h5>
-    <p><%= booking.start_date %></p>
-    <p><%= booking.end_date %></p>
-    <% if @test_sucker == current_sucker %>
+<% if @test_sucker == current_sucker %>
+  <h2>Bookings</h2>
+  <% @test_sucker.bookings.each do |booking| %>
+    <div class="card">
+      <h5><%= booking.beast.name %></h5>
+      <p><%= booking.start_date %></p>
+      <p><%= booking.end_date %></p>
       <%= link_to "add review", booking_path(booking.id) %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>
+
+
 
 <h2>Beasts</h2>
 <% @test_sucker.beasts.each do |beast| %>
@@ -22,6 +24,22 @@
       <%= link_to "edit", edit_beast_path(beast.id) %>
     <% end %>
   </div>
+<% end %>
+
+<% if @test_sucker == current_sucker %>
+  <h2>Your Beasts booking history</h2>
+
+  <% @test_sucker.beast_ids.each do |id| %>
+    <% @booking = Booking.where(beast_id: id) %>
+     <% @booking.each do |booking| %>
+      <div class="card">
+        <h5><%= booking.beast.name %></h5>
+        <p><%= booking.start_date %></p>
+        <p><%= booking.end_date %></p>
+        <%= link_to "add review", booking_path(booking.id) %>
+      </div>
+     <% end %>
+  <% end %>
 <% end %>
 
 <h2>Reviews</h2>

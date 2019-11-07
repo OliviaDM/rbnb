@@ -1,0 +1,9 @@
+<!-- PHOTO -->
+<!-- NAME -->
+<!-- BEASTMASTER -->
+<img src="https://www.sciencesetavenir.fr/assets/img/2019/03/25/cover-r4x3w1000-5c98c40f5bf3d-cat-3535399-1920.jpg" class="card-img-top" alt="Cute kittens!">
+<div class="card-body">
+  <h4><%= link_to beast.name, beast_path(beast.id) %></h4>
+  <%= beast.type.name %> <br>
+  <%= link_to beast.sucker.name, sucker_path(beast.sucker.id) %>
+</div>
