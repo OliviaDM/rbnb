@@ -2,4 +2,11 @@
 <h2><%= @booking.beast.name %></h2>
 <h2><%= @booking.start_date %></h2>
 <h2><%= @booking.end_date %></h2>
-<%= render 'form_review', beast: @booking.beast, booking: @booking, review: @booking.review %>
+
+<% if @booking.sucker_id == current_sucker.id %>
+  <%= render 'form_review', beast: @booking.beast, booking: @booking, review: @booking.review %>
+<% end %>
+<% if current_sucker.id == @beast.sucker_id %>
+  <%= render 'form_review_beast', beast: @booking.beast, booking: @booking, review: @booking.review %>
+<% end %>
+

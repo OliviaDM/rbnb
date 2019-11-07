@@ -7,6 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+Review.delete_all
+Booking.delete_all
+Beast.delete_all
+Sucker.delete_all
+Type.delete_all
+
+
 sucker = Sucker.create!(name: "Quarantaine", user_name: "loser", email: "loseremail@loser.loser", phone: "+123", encrypted_password: "pregnfnsat", password: "pregnfnsat", avatar: "beanface.png")
 
 sucker = Sucker.create!(name: "Olivia", user_name: "liv", email: "coolemail@cool.cool", phone: "pls don't", encrypted_password: "password", password: "password", avatar: "cuteface.png")
