@@ -7,6 +7,8 @@
       <h5><%= booking.beast.name %></h5>
       <p><%= booking.start_date %></p>
       <p><%= booking.end_date %></p>
+      <% total = (booking.end_date - booking.start_date) * booking.beast.price%>
+      <p>You paid $<%= total %>, loser !</p>
       <%= link_to "add review", booking_path(booking.id) %>
     </div>
   <% end %>
@@ -37,6 +39,9 @@
         <h5><%= booking.beast.name %></h5>
         <p><%= booking.start_date %></p>
         <p><%= booking.end_date %></p>
+        <p>$<%= booking.beast.price %>/day</p>
+        <% total = (booking.end_date - booking.start_date) * booking.beast.price%>
+        <p>You gained $<%= total %>, bitch please !</p>
         <%= link_to "add review", booking_path(booking.id) %>
       </div>
      <% end %>
