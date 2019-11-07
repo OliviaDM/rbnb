@@ -30,7 +30,8 @@ poke.save
   region = Faker::Address.city
   description = Faker::Lorem.paragraph
   name = Faker::Games::Pokemon.name
-  beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: poke.id)
+  price = rand(1..200)
+  beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: poke.id, price: price)
   beast.save
   beast.errors
 end
@@ -43,7 +44,8 @@ sonic.save
   region = Faker::Address.city
   description = Faker::Lorem.paragraph
   name = Faker::Games::SonicTheHedgehog.character
-  beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: sonic.id)
+  price = rand(1..200)
+  beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: sonic.id, price: price)
   beast.save
 end
 
@@ -55,6 +57,7 @@ zelda.save
   region = Faker::Address.city
   description = Faker::Lorem.paragraph
   name = Faker::Games::Zelda.character
-  beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: zelda.id)
+  price = rand(1..200)
+  beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: zelda.id, price: price)
   beast.save
 end
