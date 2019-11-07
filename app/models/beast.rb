@@ -7,6 +7,7 @@ class Beast < ApplicationRecord
 
   validates :sucker_id, :type_id, presence: true
   validates :name, presence: true, uniqueness: true
+  validates :price, presence: true, numercality: { only_interger: false, greater_than: 0 }
   validates :description, presence: true, length: {
     in: 20..200,
     too_short: "The description should be longer than 20 characters,
