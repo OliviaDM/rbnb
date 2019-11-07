@@ -4,9 +4,11 @@ import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
 // internal imports - MAP
 import { initMapbox } from 'plugins/init_mapbox';
+import { initMapbox2 } from 'plugins/init_mapbox';
 // Search on map
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 
 initMapbox();
+initMapbox2();
 // MAP
