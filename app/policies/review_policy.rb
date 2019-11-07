@@ -3,9 +3,12 @@ class ReviewPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-
-    def update
+  end
+  def update?
+    if @user.id == @record.sucker_id
       true
+    else
+      false
     end
   end
 end

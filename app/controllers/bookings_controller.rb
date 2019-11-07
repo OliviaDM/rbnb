@@ -27,10 +27,12 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    authorize @booking
   end
 
   def update
     @booking.update(booking_params)
+    authorize @booking
   end
 
   def destroy
