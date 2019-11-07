@@ -3,6 +3,11 @@ class BeastsController < ApplicationController
   before_action :set_current_beast, only: [:show, :edit, :update, :destroy]
   def index
     @beasts = Beast.geocoded
+    if params[:query].present?
+      @beasts = Beast.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @beasts = Beast.all
+    end
 
     @markers = @beasts.map do |beast|
       {
