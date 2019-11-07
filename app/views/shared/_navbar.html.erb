@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+  <div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <!-- <a class="navbar-brand" href="#">BnB</a> -->
+        <%= link_to "BnB", root_path, :class => "navbar-brand" %>
+      </li>
+      <li class="nav-item">
+        <!-- <a class="nav-link" href="#">Find a beast!</a> -->
+        <%= link_to "Find a beast!", beasts_path, :class => "nav-link" %>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <% if sucker_signed_in? %>
+      <%= link_to "Register a beast!", new_beast_path, :class => "nav-item" %>
+      <%= link_to "Log out", destroy_sucker_session_path, method: :delete, :class => "nav-item" %>
+    <% else %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <!-- <a class="nav-link" href="#">Sign Up<span class="sr-only">(current)</span></a> -->
+          <%= link_to "Sign Up", new_sucker_registration_path, :class => "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <!-- <a class="nav-link" href="#">Log In</a> -->
+          <%= link_to "Log In", new_sucker_session_path, :class => "nav-link" %>
+        </li>
+      </ul>
+    <% end %>
+
+  </div>
+</nav>

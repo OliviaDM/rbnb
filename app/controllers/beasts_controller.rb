@@ -39,12 +39,12 @@ class BeastsController < ApplicationController
     @beast = Beast.new(beast_params)
     @beast.sucker_id = current_sucker.id
     @beast.save
-    raise
     redirect_to @beast, notice: 'Beast was successfully created.'
     authorize @beast
   end
 
   def edit
+    authorize @current_beast
   end
 
   def update

@@ -1,28 +1,31 @@
-<h1><%= @current_sucker.name %></h1>
+<h1><%= @test_sucker.name %></h1>
 
-<h2>Bookings</h2>
-<% @current_sucker.bookings.each do |booking| %>
-  <div class="card">
-    <h5><%= booking.beast.name %></h5>
-    <p><%= booking.start_date %></p>
-    <p><%= booking.end_date %></p>
-    <% if @current_sucker == current_sucker %>
+<% if @test_sucker == current_sucker %>
+  <h2>Bookings</h2>
+  <% @test_sucker.bookings.each do |booking| %>
+    <div class="card">
+      <h5><%= booking.beast.name %></h5>
+      <p><%= booking.start_date %></p>
+      <p><%= booking.end_date %></p>
       <%= link_to "add review", booking_path(booking.id) %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>
 
 <h2>Beasts</h2>
-<% @current_sucker.beasts.each do |beast| %>
+<% @test_sucker.beasts.each do |beast| %>
   <div class="card">
     <h5><%= beast.name %></h5>
     <p><%= beast.type.name %></p>
     <p><%= beast.region %></p>
+    <% if @test_sucker == current_sucker %>
+      <%= link_to "edit", edit_beast_path(beast.id) %>
+    <% end %>
   </div>
 <% end %>
 
 <h2>Reviews</h2>
-<% @current_sucker.reviews.each do |review| %>
+<% @test_sucker.reviews.each do |review| %>
   <% if !review.sucker_content.nil? && !review.sucker_rating.nil? %>
     <div class="card">
       <h5><%= review.booking.beast.name %></h5>
