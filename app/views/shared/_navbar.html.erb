@@ -13,20 +13,19 @@
   </div>
   <div>
     <% if sucker_signed_in? %>
-      link to create a beast
-      link to singn out
+      <%= link_to "Register a beast!", new_beast_path, :class => "nav-item" %>
+      <%= link_to "Log out", destroy_sucker_session_path, method: :delete, :class => "nav-item" %>
     <% else %>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <!-- <a class="nav-link" href="#">Sign Up<span class="sr-only">(current)</span></a> -->
-        <%= link_to "Sign Up", new_sucker_registration_path, :class => "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <!-- <a class="nav-link" href="#">Log In</a> -->
-        <%= link_to "Log In", new_sucker_session_path, :class => "nav-link" %>
-      </li>
-    </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <!-- <a class="nav-link" href="#">Sign Up<span class="sr-only">(current)</span></a> -->
+          <%= link_to "Sign Up", new_sucker_registration_path, :class => "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <!-- <a class="nav-link" href="#">Log In</a> -->
+          <%= link_to "Log In", new_sucker_session_path, :class => "nav-link" %>
+        </li>
+      </ul>
     <% end %>
-
   </div>
 </nav>
