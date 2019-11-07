@@ -1,15 +1,15 @@
 <h1><%= @test_sucker.name %></h1>
 
-<h2>Bookings</h2>
-<% @test_sucker.bookings.each do |booking| %>
-  <div class="card">
-    <h5><%= booking.beast.name %></h5>
-    <p><%= booking.start_date %></p>
-    <p><%= booking.end_date %></p>
-    <% if @test_sucker == current_sucker %>
+<% if @test_sucker == current_sucker %>
+  <h2>Bookings</h2>
+  <% @test_sucker.bookings.each do |booking| %>
+    <div class="card">
+      <h5><%= booking.beast.name %></h5>
+      <p><%= booking.start_date %></p>
+      <p><%= booking.end_date %></p>
       <%= link_to "add review", booking_path(booking.id) %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>
 
 <h2>Beasts</h2>
