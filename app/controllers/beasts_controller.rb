@@ -16,6 +16,12 @@ class BeastsController < ApplicationController
   end
 
   def show
+    @beast_geo = @current_beast.geocode
+    @marker = {
+      lat: @beast_geo[0],
+      lng: @beast_geo[1]
+    }
+
     @booking = Booking.new(beast_id: @current_beast.id)
     @average_rating = 0
     @count = 0
