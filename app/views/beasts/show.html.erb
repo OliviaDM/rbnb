@@ -7,9 +7,29 @@
 </div>
 
 <div class="container-beast">
-  <div>
-    <h4>Book this beast</h4>
-    <%= render 'booking_form', beast: @current_beast, booking: @booking %>
+
+  <div class="info-book">
+    <div>
+      <h4><%=  @current_beast.name %></h4>
+      <ul>
+        <li>Region: <%= @current_beast.region %></li>
+        <li>Type: <%= @current_beast.type.name %></li>
+      </ul>
+
+      <div
+        id="map"
+        style="width: 100%;
+        height: 150px; margin: 0 auto;"
+        data-markers="<%= @marker.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+
+    </div>
+
+    <div class="form">
+      <h4>Book this beast</h4>
+      <%= render 'booking_form', beast: @current_beast, booking: @booking %>
+    </div>
   </div>
 
 <div>
@@ -23,12 +43,22 @@
       <p>No ratings given yet.</p>
     <% else %>
       <p>Average rating: </p>
+      <% (@average_rating / @count).times do %>
+        <i class="fas fa-star"></i>
+      <% end %>
       <%= @average_rating.fdiv(@count) %>
     <% end %>
     <% @current_beast.reviews.each do |review| %>
-      <div class="card">
-        <%= review.beast_content %>
-      </div>
+      <% unless review.beast_content.nil? && review.beast_rating.nil?%>
+        <div class="card-review">
+          <%= review.beast_content %> <br>
+          <% unless review.beast_rating.nil? %>
+            <% review.beast_rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 
