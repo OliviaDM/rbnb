@@ -20,6 +20,7 @@
     <h5><%= beast.name %></h5>
     <p><%= beast.type.name %></p>
     <p><%= beast.region %></p>
+    <p>$<%= beast.price %>/day</p>
     <% if @test_sucker == current_sucker %>
       <%= link_to "edit", edit_beast_path(beast.id) %>
     <% end %>
