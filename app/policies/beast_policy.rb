@@ -12,4 +12,8 @@ class BeastPolicy < ApplicationPolicy
       false
     end
   end
+
+  def update?
+    true
+  end
 end
