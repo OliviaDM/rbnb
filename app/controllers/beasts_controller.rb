@@ -24,10 +24,13 @@ class BeastsController < ApplicationController
 
   def show
     @beast_geo = @current_beast.geocode
-    @marker = {
-      lat: @beast_geo[0],
-      lng: @beast_geo[1]
-    }
+    unless @beast_geo.nil?
+      @markers = [{
+        lat: @beast_geo[0],
+        lng: @beast_geo[1],
+        image_url: helpers.asset_url('pokeball.png')
+      }]
+    end
 
     @booking = Booking.new(beast_id: @current_beast.id)
     @average_rating = 0
