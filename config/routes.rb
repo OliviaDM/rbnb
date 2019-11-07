@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :suckers
+  resources :suckers, only: [:show, :new, :create, :edit, :update]
 
   root to: 'pages#home'
   resources :beasts do
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :suckers, only: [:show, :new, :create, :edit, :update]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
