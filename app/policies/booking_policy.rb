@@ -5,7 +5,7 @@ class BookingPolicy < ApplicationPolicy
     end
   end
   def show?
-    if @user.id == @record.sucker_id
+    if @user.id == @record.sucker_id || @user.id == @record.beast.sucker_id
       true
     else
       false

@@ -5,10 +5,6 @@ class ReviewPolicy < ApplicationPolicy
     end
   end
   def update?
-    if @user.id == @record.sucker_id
-      true
-    else
-      false
-    end
+    true
   end
 end
