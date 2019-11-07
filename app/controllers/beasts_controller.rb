@@ -54,7 +54,8 @@ class BeastsController < ApplicationController
 
   def update
     if @current_beast.update(beast_params)
-      redirect_to @beast, notice: 'Beast was successfully updated.'
+      redirect_to @current_beast, notice: 'Beast was successfully updated.'
+      authorize @current_beast
     else
       render :edit
     end
@@ -72,6 +73,6 @@ class BeastsController < ApplicationController
   end
 
   def beast_params
-    params.require(:beast).permit(:sucker_id, :type_id, :name, :region, :description)
+    params.require(:beast).permit(:sucker_id, :type_id, :name, :region, :description, :price)
   end
 end
