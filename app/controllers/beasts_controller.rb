@@ -7,7 +7,9 @@ class BeastsController < ApplicationController
     @markers = @beasts.map do |beast|
       {
         lat: beast.latitude,
-        lng: beast.longitude
+        lng: beast.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { beast: beast }),
+        image_url: helpers.asset_url('pokeball.png')
       }
     end
 
