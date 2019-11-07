@@ -3,13 +3,16 @@ class BookingPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-
-    def show?
+  end
+  def show?
+    if @user.id == @record.sucker_id
       true
+    else
+      false
     end
+  end
 
-    def create?
-      true
-    end
+  def create?
+    true
   end
 end
