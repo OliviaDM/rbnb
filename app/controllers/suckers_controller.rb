@@ -14,17 +14,17 @@ class SuckersController < ApplicationController
   end
 
   def update
-    @current_sucker.update(sucker_params)
+    @test_sucker.update(sucker_params)
   end
 
   def show
-    authorize @current_sucker
+    authorize @test_sucker
   end
 
   private
 
   def set_current_sucker
-    @current_sucker = Sucker.find(params[:id])
+    @test_sucker = Sucker.find(params[:id])
   end
 
   def sucker_params
