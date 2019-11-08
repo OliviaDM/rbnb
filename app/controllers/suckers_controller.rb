@@ -18,6 +18,14 @@ class SuckersController < ApplicationController
   end
 
   def show
+    @average_rating = 0
+    @count = 0
+    @test_sucker.reviews.each do |review|
+      if review.beast_rating
+        @count += 1
+        @average_rating += review.beast_rating
+      end
+    end
     authorize @test_sucker
   end
 
