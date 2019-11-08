@@ -53,8 +53,11 @@ class BeastsController < ApplicationController
     @beast = Beast.new(beast_params)
     @beast.sucker_id = current_sucker.id
     @beast.save
-    redirect_to @beast, notice: 'Beast was successfully created.'
     authorize @beast
+    @availability = Availability.new(start_date: set_start_date, end_date: set_end_date)
+    @availability.beast_id = @beast.id
+    @availability.save
+    redirect_to @beast, notice: 'Beast was successfully created.'
   end
 
   def edit
@@ -83,5 +86,13 @@ class BeastsController < ApplicationController
 
   def beast_params
     params.require(:beast).permit(:sucker_id, :type_id, :name, :region, :description, :price)
+  end
+
+  def set_start_date
+    @date = Time.now
+  end
+
+  def set_end_date
+    @end_date = DateTime.now.next_year(1)
   end
 end

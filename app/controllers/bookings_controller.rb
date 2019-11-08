@@ -17,12 +17,26 @@ class BookingsController < ApplicationController
     @booking.beast_id = params[:id]
 
     @booking.sucker_id = current_sucker.id
-    @booking.save
-    # p @booking
-    @review = Review.new()
-    @review.booking_id = @booking.id
-    @review.save
-    redirect_to sucker_path(current_sucker.id)
+    @availabilities = Availability.where(beast_id: @booking.beast_id)
+    found = false
+    @availabilities.each do |availability|
+      if @booking.start_date > availability.start_date && @booking.end_date < availability.end_date
+        availability.update(end_date: @booking.start_date)
+        new_availability = Availability.new(start_date: @booking.end_date, end_date: availability.end_date)
+        new_availability.beast_id = @booking.beast_id
+        new_availability.save
+        found = true
+      end
+    end
+    if found
+      @booking.save
+      @review = Review.new()
+      @review.booking_id = @booking.id
+      @review.save
+      redirect_to sucker_path(current_sucker.id)
+    else
+      redirect_to beast_path(@booking.beast_id)
+    end
     authorize @booking
   end
 
