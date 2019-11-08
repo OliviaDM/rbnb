@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_154713) do
+ActiveRecord::Schema.define(version: 2019_11_08_095624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "availabilities", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "beast_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beast_id"], name: "index_availabilities_on_beast_id"
+  end
 
   create_table "beasts", force: :cascade do |t|
     t.bigint "sucker_id"
@@ -82,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_154713) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "availabilities", "beasts"
   add_foreign_key "beasts", "suckers"
   add_foreign_key "beasts", "types"
   add_foreign_key "bookings", "beasts"
