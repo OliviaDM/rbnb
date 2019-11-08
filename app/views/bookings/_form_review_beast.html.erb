@@ -1,5 +1,5 @@
 <%= simple_form_for([@beast, @booking, @review], html: {class: "form-group form-box"}, :url => review_path)  do |f| %>
-<%= "beast review" %> <br>
+<%= "Edit your review on this beast" %> <br>
 <%= f.label :beast_rating %>
 <%= f.number_field :beast_rating, class: "form-control" %> <br>
 
