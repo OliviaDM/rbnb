@@ -18,8 +18,15 @@
           <li class="nav-item">
             <%= link_to "Register a beast!", new_beast_path, :class => "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Log out", destroy_sucker_session_path, method: :delete, :class => "nav-link" %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="https://www.petmd.com/sites/default/files/small-kitten-walking-towards_127900829_0.jpg" alt="" class="avatar">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", sucker_path(current_sucker.id), :class => "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Log out", destroy_sucker_session_path, method: :delete, :class => "dropdown-item" %>
+            </div>
           </li>
         </ul>
 
