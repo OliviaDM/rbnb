@@ -37,6 +37,14 @@
   <p>$<%= @current_beast.price %>/ day</p>
 </div>
 
+<div>
+  <ul>
+    <% @current_beast.availabilities.each do |av| %>
+      <li><p>Available from <%= av.start_date %> to <%= av.end_date %></p></li>
+    <% end %>
+  </ul>
+</div>
+
   <div>
     <h4>Reviews</h4>
     <% if @count.zero? %>
