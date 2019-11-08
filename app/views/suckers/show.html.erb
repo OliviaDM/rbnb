@@ -7,15 +7,32 @@
 
   <% if @test_sucker == current_sucker %>
     <h2>Bookings</h2>
-    <div class="cards d-flex flex-wrap">
+
+    <div class="cards">
       <% @test_sucker.bookings.each do |booking| %>
-        <div class="card w-25 m-3">
-          <h5><%= booking.beast.name %></h5>
-          <p>From <%= booking.start_date %></p>
-          <p>To <%= booking.end_date %></p>
+        <div class="card m-3 p-1" style="width: 100%;">
+          <h5 class="card-title"><%= link_to booking.beast.name, beast_path(booking.beast.id) %></h5>
+          <div class="card-subtitle mb-2 text-muted">
+            <p>From <%= booking.start_date %> <br>
+            To <%= booking.end_date %></p>
+          </div>
           <% total = (booking.end_date - booking.start_date) * booking.beast.price%>
           <p>You paid $<%= total %>, loser !</p>
-          <%= link_to "add review", booking_path(booking.id) %>
+          <% if booking.review.beast_content.nil? && booking.review.beast_rating.nil? %>
+            <%= link_to "add review", booking_path(booking.id) %>
+          <% else %>
+
+            <div class="card-review flex-grow-1">
+              <h5><%= booking.review.beast_content %></h5>
+              <% unless booking.review.beast_rating.nil? %>
+                <% booking.review.beast_rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+              <% end %>
+              <br><%= link_to "edit review", booking_path(booking.id) %>
+            </div>
+
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -26,9 +43,9 @@
   <h2>Beasts</h2>
   <div class="cards d-flex flex-wrap">
     <% @test_sucker.beasts.each do |beast| %>
-      <div class="card w-25 m-3">
-        <h5><%= beast.name %></h5>
-        <p><%= beast.type.name %></p>
+      <div class="card w-25 m-3 p-1">
+        <h5><%= link_to beast.name, beast_path(beast.id) %></h5>
+        <p class="text-muted"><%= beast.type.name %></p>
         <p><%= beast.region %></p>
         <p>$<%= beast.price %>/day</p>
         <% if @test_sucker == current_sucker %>
@@ -41,18 +58,34 @@
   <% if @test_sucker == current_sucker %>
     <h2>Your Beasts booking history</h2>
 
-    <div class="cards d-flex flex-wrap">
+    <div class="cards">
       <% @test_sucker.beast_ids.each do |id| %>
         <% @booking = Booking.where(beast_id: id) %>
          <% @booking.each do |booking| %>
-          <div class="card">
-            <h5><%= booking.beast.name %></h5>
-            <p><%= booking.start_date %></p>
-            <p><%= booking.end_date %></p>
-            <p>$<%= booking.beast.price %>/day</p>
-            <% total = (booking.end_date - booking.start_date) * booking.beast.price%>
-            <p>You gained $<%= total %>, bitch please !</p>
+          <div class="card m-3 p-1 rounded">
+
+            <h5 class="card-title"><%= link_to booking.beast.name, beast_path(booking.beast.id) %></h5>
+
+            <div class="card-subtitle mb-2 text-muted">
+              <p>From <%= booking.start_date %> <br>
+              To <%= booking.end_date %></p>
+            </div>
+            <p>You gained $<%= (booking.end_date - booking.start_date) * booking.beast.price %>, bitch please !</p>
+            <% if booking.review.sucker_content.nil? && booking.review.sucker_rating.nil? %>
             <%= link_to "add review", booking_path(booking.id) %>
+          <% else %>
+
+            <div class="card-review flex-grow-1">
+              <h5><%= booking.review.sucker_content %></h5>
+              <% unless booking.review.sucker_rating.nil? %>
+                <% booking.review.sucker_rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+              <% end %>
+              <br><%= link_to "edit review", booking_path(booking.id) %>
+            </div>
+
+          <% end %>
           </div>
          <% end %>
       <% end %>
@@ -71,12 +104,12 @@
       <%= @average_rating.fdiv(@count).round(1) %>
     <% end %>
   <% @test_sucker.reviews.each do |review| %>
-    <% if !review.beast_content.nil? && !review.beast_rating.nil? %>
+    <% if !review.sucker_content.nil? && !review.sucker_rating.nil? %>
       <div class="card-review">
         <p><%= review.booking.beast.sucker.name + " for " +review.booking.beast.name %></p>
-        <h5><%= review.beast_content %></h5>
-        <% unless review.beast_rating.nil? %>
-          <% review.beast_rating.times do %>
+        <h5><%= review.sucker_content %></h5>
+        <% unless review.sucker_rating.nil? %>
+          <% review.sucker_rating.times do %>
             <i class="fas fa-star"></i>
           <% end %>
         <% end %>

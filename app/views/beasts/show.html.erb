@@ -49,11 +49,12 @@
       <%= @average_rating.fdiv(@count).round(1) %>
     <% end %>
     <% @current_beast.reviews.each do |review| %>
-      <% unless review.sucker_content.nil? && review.sucker_rating.nil?%>
+      <% unless review.beast_content.nil? && review.beast_rating.nil?%>
         <div class="card-review">
-          <%= review.sucker_content %> <br>
-          <% unless review.sucker_rating.nil? %>
-            <% review.sucker_rating.times do %>
+          <small>from <%= review.booking.sucker.name %></small> <br>
+          <%= review.beast_content %> <br>
+          <% unless review.beast_rating.nil? %>
+            <% review.beast_rating.times do %>
               <i class="fas fa-star"></i>
             <% end %>
           <% end %>

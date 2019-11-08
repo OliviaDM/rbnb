@@ -36,9 +36,9 @@ class BeastsController < ApplicationController
     @average_rating = 0
     @count = 0
     @current_beast.reviews.each do |review|
-      if review.sucker_rating
+      if review.beast_rating
         @count += 1
-        @average_rating += review.sucker_rating
+        @average_rating += review.beast_rating
       end
     end
     authorize @current_beast
