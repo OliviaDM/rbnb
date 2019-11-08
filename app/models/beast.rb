@@ -4,6 +4,7 @@ class Beast < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :photos, dependent: :destroy
   has_many :reviews, through: :bookings
+  has_many :availabilities
 
   validates :sucker_id, :type_id, presence: true
   validates :name, presence: true, uniqueness: true

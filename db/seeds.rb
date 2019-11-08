@@ -33,6 +33,10 @@ poke.save
   price = rand(1..200)
   beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: poke.id, price: price)
   beast.save
+
+  av = Availability.new(start_date: Time.now, end_date: DateTime.now.next_year(1))
+  av.beast = beast
+  av.save
   beast.errors
 end
 
@@ -47,6 +51,9 @@ sonic.save
   price = rand(1..200)
   beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: sonic.id, price: price)
   beast.save
+  av = Availability.new(start_date: Time.now, end_date: DateTime.now.next_year(1))
+  av.beast = beast
+  av.save
 end
 
 zelda = Type.new(name: "zelda")
@@ -60,4 +67,7 @@ zelda.save
   price = rand(1..200)
   beast = Beast.new(name: name, region: region, description: description, sucker_id: owner.id, type_id: zelda.id, price: price)
   beast.save
+  av = Availability.new(start_date: Time.now, end_date: DateTime.now.next_year(1))
+  av.beast = beast
+  av.save
 end

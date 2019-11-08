@@ -1,6 +1,7 @@
 .container-beast {
-  width: 100%;
-  padding: 20px 50px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px 50px;
   background-color: $glitter;
 }
 
@@ -19,6 +20,10 @@
   background-color: $taupe-grey;
   margin: 2px 0;
   color: $glitter;
+}
+
+.card-review a {
+  color: $baby-blue;
 }
 
 .banner-star {
