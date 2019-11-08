@@ -21,8 +21,8 @@ class BookingsController < ApplicationController
     found = false
     @availabilities.each do |availability|
       if @booking.start_date > availability.start_date && @booking.end_date < availability.end_date
-        availability.update(end_date: @booking.start_date)
         new_availability = Availability.new(start_date: @booking.end_date, end_date: availability.end_date)
+        availability.update(end_date: @booking.start_date)
         new_availability.beast_id = @booking.beast_id
         new_availability.save
         found = true
