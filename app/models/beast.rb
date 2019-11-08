@@ -2,7 +2,6 @@ class Beast < ApplicationRecord
   belongs_to :sucker
   belongs_to :type
   has_many :bookings, dependent: :destroy
-  has_many :photos, dependent: :destroy
   has_many :reviews, through: :bookings
 
   validates :sucker_id, :type_id, presence: true
