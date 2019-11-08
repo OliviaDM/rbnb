@@ -4,6 +4,8 @@ class Beast < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
 
+  has_attachments :photos, maximum: 7
+
   validates :sucker_id, :type_id, presence: true
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: { only_integer: false, greater_than: 0 }
