@@ -41,6 +41,7 @@ class BeastsController < ApplicationController
         @average_rating += review.beast_rating
       end
     end
+
     authorize @current_beast
   end
 
@@ -85,7 +86,7 @@ class BeastsController < ApplicationController
   end
 
   def beast_params
-    params.require(:beast).permit(:sucker_id, :type_id, :name, :region, :description, :price)
+    params.require(:beast).permit(:sucker_id, :type_id, :name, :region, :description, :price, photos: [])
   end
 
   def set_start_date
