@@ -41,6 +41,7 @@ class BeastsController < ApplicationController
         @average_rating += review.beast_rating
       end
     end
+
     authorize @current_beast
   end
 
