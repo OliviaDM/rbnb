@@ -28,10 +28,7 @@
         <!-- Wrapper for slides -->
         <!-- <div class="carousel-inner">
 
-          <div class="item active">
-              <%= cl_image_tag @current_beast.photos[0].path %>
-          </div>
- -->
+         -->
           <% @current_beast.photos.each do |photo| %>
             <div class="item">
               <%= cl_image_tag photo.path %>
