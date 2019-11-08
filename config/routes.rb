@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Attachinary::Engine => "/attachinary"
+
   devise_for :suckers
   resources :suckers, only: [:show, :new, :create, :edit, :update]
 
