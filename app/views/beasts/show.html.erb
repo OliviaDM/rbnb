@@ -51,6 +51,7 @@
     <% @current_beast.reviews.each do |review| %>
       <% unless review.beast_content.nil? && review.beast_rating.nil?%>
         <div class="card-review">
+          <small>from <%= review.booking.sucker.name %></small> <br>
           <%= review.beast_content %> <br>
           <% unless review.beast_rating.nil? %>
             <% review.beast_rating.times do %>
