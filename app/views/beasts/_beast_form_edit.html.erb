@@ -1,19 +1,21 @@
-<%= simple_form_for(@current_beast) do |f| %>
+<%= simple_form_for(@current_beast, html: {class: "form-group form-box"}) do |f| %>
 
 <%= f.label :name %>
-<%= f.text_field :name %> <br>
+<%= f.text_field :name, class: "form-control" %> <br>
 
-<%= f.association :type %> <br>
+<%= f.association :type, class: "form-control" %> <br>
 
 <%= f.label :description %>
-<%= f.text_field :description %> <br>
+<%= f.text_field :description, class: "form-control" %> <br>
 
 <%= f.label :region %>
-<%= f.text_field :region %> <br>
+<%= f.text_field :region, class: "form-control" %> <br>
 
 <%= f.label :price %>
-<%= f.number_field :price %> <br>
+<%= f.number_field :price, class: "form-control" %> <br>
 
-<%= f.submit %>
+<%= f.input :photos, as: :attachinary %>
+
+<%= f.submit class: "btn btn-primary" %>
 
 <% end %>

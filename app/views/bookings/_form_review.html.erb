@@ -1,12 +1,12 @@
-<%= simple_form_for([@beast, @booking, @review], :url => review_path)  do |f| %>
+<%= simple_form_for([@beast, @booking, @review], html: {class: "form-group form-box"}, :url => review_path)  do |f| %>
 
 <%= "Sucker review" %> <br>
 <%= f.label :sucker_rating %>
-<%= f.number_field :sucker_rating %> <br>
+<%= f.number_field :sucker_rating, class: "form-control" %> <br>
 
 <%= f.label :sucker_content %>
-<%= f.text_field :sucker_content %> <br>
+<%= f.text_field :sucker_content, class: "form-control" %> <br>
 
-<%= f.submit %>
+<%= f.submit class: "btn btn-primary" %>
 
 <% end %>
