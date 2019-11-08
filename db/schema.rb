@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 2019_11_08_110814) do
     t.datetime "updated_at", null: false
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent"
   end
+  
+  create_table "availabilities", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "beast_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beast_id"], name: "index_availabilities_on_beast_id"
+  end
 
   create_table "beasts", force: :cascade do |t|
     t.bigint "sucker_id"
@@ -97,6 +106,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_110814) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "availabilities", "beasts"
   add_foreign_key "beasts", "suckers"
   add_foreign_key "beasts", "types"
   add_foreign_key "bookings", "beasts"

@@ -3,6 +3,7 @@ class Beast < ApplicationRecord
   belongs_to :type
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
+  has_many :availabilities
 
   has_attachments :photos, maximum: 7
 
