@@ -1,6 +1,6 @@
 <%= simple_form_for([@beast, @booking, @review], html: {class: "form-group form-box"}, :url => review_path)  do |f| %>
 
-<%= "Sucker review" %> <br>
+<%= "How have they treated your beast?" %> <br>
 <%= f.label :sucker_rating %>
 <%= f.number_field :sucker_rating, class: "form-control" %> <br>
 
