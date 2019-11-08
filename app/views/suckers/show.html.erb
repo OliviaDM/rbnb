@@ -41,9 +41,9 @@
 
 
   <h2>Beasts</h2>
-  <div class="cards d-flex flex-wrap">
+  <div class="cards d-flex flex-wrap justify-content-around">
     <% @test_sucker.beasts.each do |beast| %>
-      <div class="card w-25 m-3 p-1">
+      <div class="card w-25 m-3 p-3">
         <h5><%= link_to beast.name, beast_path(beast.id) %></h5>
         <p class="text-muted"><%= beast.type.name %></p>
         <p><%= beast.region %></p>
